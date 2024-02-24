@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+  
     //Screen object variables
     public GameObject loginUI;
     public GameObject registerUI;
+    public GameObject waypointUI;
 
     private void Awake()
     {
@@ -33,5 +36,12 @@ public class UIManager : MonoBehaviour
     {
         loginUI.SetActive(false);
         registerUI.SetActive(true);
+    }
+
+    public void OpenWaypointTest()
+    {
+        loginUI.SetActive(false);
+        registerUI.SetActive(false);
+        waypointUI.SetActive(true);
     }
 }

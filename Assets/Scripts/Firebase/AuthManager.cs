@@ -29,6 +29,8 @@ public class AuthManager : MonoBehaviour
     public TMP_InputField passwordRegisterVerifyField;
     public TMP_Text warningRegisterText;
 
+    public UIManager UIManager;
+
     void Awake()
     {
         //Check that all of the necessary dependencies for Firebase are present on the system
@@ -110,6 +112,7 @@ public class AuthManager : MonoBehaviour
             Debug.LogFormat("O usuário logou com sucesso {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logado!";
+            UIManager.OpenWaypointTest();
         }
     }
 
