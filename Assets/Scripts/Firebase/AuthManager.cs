@@ -2,9 +2,11 @@ using System.Collections;
 using UnityEngine;
 using Firebase;
 using Firebase.Auth;
+using Firebase.Database;
 using TMPro;
 using System.Threading.Tasks;
 using Microsoft.Win32;
+
 
 public class AuthManager : MonoBehaviour
 {

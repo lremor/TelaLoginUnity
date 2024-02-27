@@ -2745,6 +2745,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892283420}
   m_CullTransparentMesh: 0
+--- !u!1 &966396719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966396721}
+  - component: {fileID: 966396720}
+  m_Layer: 0
+  m_Name: DataBaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &966396720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966396719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac41a7b266a26214ca382d33a993d697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dts:
+    waypoint: 0
+  userId: 
+  WaypointField: {fileID: 1328226847}
+  waypointText: {fileID: 1020199372}
+--- !u!4 &966396721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966396719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971582707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,7 +2861,7 @@ GameObject:
   - component: {fileID: 1020199373}
   - component: {fileID: 1020199372}
   m_Layer: 0
-  m_Name: Confirm_Text
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2857,7 +2906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2866,7 +2915,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282466801
+    rgba: 4283494721
   m_fontColor: {r: 0.25490198, g: 0.9450981, b: 0.3137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4335,9 +4384,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 971582710}
-        m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
-        m_MethodName: LoginButton
+      - m_Target: {fileID: 966396720}
+        m_TargetAssemblyTypeName: DataSaver, Assembly-CSharp
+        m_MethodName: LoadDataFn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5341,9 +5390,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 971582710}
-        m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
-        m_MethodName: LoginButton
+      - m_Target: {fileID: 966396720}
+        m_TargetAssemblyTypeName: DataSaver, Assembly-CSharp
+        m_MethodName: SaveDataFn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5851,7 +5900,7 @@ GameObject:
   - component: {fileID: 1607484355}
   - component: {fileID: 1607484354}
   m_Layer: 0
-  m_Name: Warning_Text
+  m_Name: Waypoint_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7523,9 +7572,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 971582710}
+      - m_Target: {fileID: 11500000, guid: f9e81ed2b1d6d1243800896b138cb2d7, type: 3}
         m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
-        m_MethodName: LoginButton
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8212,3 +8261,4 @@ SceneRoots:
   - {fileID: 1668592277}
   - {fileID: 2056093199}
   - {fileID: 971582709}
+  - {fileID: 966396721}
