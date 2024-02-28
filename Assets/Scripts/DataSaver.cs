@@ -6,14 +6,18 @@ using Firebase.Database;
 using TMPro;
 
 [Serializable]
-public class dataToSave
+public class DataToSave
 {
     public int waypoint;
 }
+public class DataToCreate
+{
+    public string users;
+}
 public class DataSaver : MonoBehaviour
 {
-    public dataToSave dts;
-    public string userId = "PLK60QqNdJSbUVhoxPVcKBLBwDW2";
+    public DataToSave dts;
+    public DataToCreate dtc;
     DatabaseReference dbRef;
     public TMP_InputField WaypointField;
     public TMP_Text waypointText;
@@ -27,20 +31,55 @@ public class DataSaver : MonoBehaviour
         }
     }
 
+    public void RemoveDataFn()
+    {
+        string json = JsonUtility.ToJson(dts);
+        dbRef.Child("users").Child("waypoint").RemoveValueAsync();
+
+        if (dts != null)
+        {
+            waypointText.text = "Users Removido!";
+        }
+    }
+
+    public void AddDataFn()
+    {
+        dtc = new DataToCreate
+        {
+            users = "users"
+
+        };
+
+        string json = JsonUtility.ToJson(dtc);
+        dbRef.Child("users").Child("waypoint").SetValueAsync(json);
+        
+        if (dtc != null)
+        {
+            // Debug.Log(dts.waypoint);
+            waypointText.text = "Adicionado: " + dtc.users.ToString();
+        }
+    }
+
     public void SaveDataFn()
     {
         if (WaypointField.text == "") 
         {
             WaypointField.text = "0";
         }
-        dts = new dataToSave
+        dts = new DataToSave
         {
             waypoint = int.Parse(WaypointField.text)
-
+            
         };
 
         string json = JsonUtility.ToJson(dts);
-        dbRef.Child("users").Child(userId).SetRawJsonValueAsync(json);
+        dbRef.Child("users").SetRawJsonValueAsync(json);
+
+        if (dts != null)
+        {
+            // Debug.Log(dts.waypoint);
+            waypointText.text = "Escrito: " + dts.waypoint.ToString();
+        }
     }
  
     public void LoadDataFn()
@@ -50,7 +89,7 @@ public class DataSaver : MonoBehaviour
 
     IEnumerator LoadDataEnum()
     {
-        var serverData = dbRef.Child("users").Child(userId).GetValueAsync();
+        var serverData = dbRef.Child("users").GetValueAsync();
         yield return new WaitUntil(predicate: () => serverData.IsCompleted);
 
         print("process is complete");
@@ -62,12 +101,12 @@ public class DataSaver : MonoBehaviour
         {
             print("server data found");
 
-            dts = JsonUtility.FromJson<dataToSave>(jsonData);
+            dts = JsonUtility.FromJson<DataToSave>(jsonData);
             
             if (dts != null)
             {
                 // Debug.Log(dts.waypoint);
-                waypointText.text = dts.waypoint.ToString();
+                waypointText.text = "Lido: " + dts.waypoint.ToString();
             }
         }
         else
